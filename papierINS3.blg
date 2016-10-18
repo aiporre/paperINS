@@ -1,0 +1,32 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: papierINS3.aux
+The style file: IEEEtran.bst
+Illegal, another \bibstyle command---line 44 of file papierINS3.aux
+ : \bibstyle
+ :          {IEEEtran}
+I'm skipping whatever remains of this command
+Database file #1: IEEEabrv.bib
+Database file #2: BiblioTh7.bib
+Warning--entry type for "Smith1995" isn't style-file defined
+--line 154 of file BiblioTh7.bib
+Warning--entry type for "Algrain1997" isn't style-file defined
+--line 162 of file BiblioTh7.bib
+Warning--entry type for "Lukyanov1996" isn't style-file defined
+--line 171 of file BiblioTh7.bib
+I was expecting a `,' or a `}'---line 195 of file BiblioTh7.bib
+ : 
+ : %%
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 432 of file BiblioTh7.bib
+ : 
+ : %%
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "IEEEhowto:kopka"
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in Hua2009
+
+Done.
+(There were 3 error messages)
