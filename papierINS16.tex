@@ -63,8 +63,8 @@
 % If IEEEtran.cls has not been installed into the LaTeX system files,
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+% \usepackage[utf8]{inputenc}
+% \usepackage[spanish]{babel}
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
 % *** MISC UTILITY PACKAGES ***
@@ -355,14 +355,14 @@ There exists a high cohersion between the ideas of design of Luenberger Observer
 %%
 Futher, an special approach is extended by \cite{Bonabel2008} which propuses a general geometrical framework for the design of observers on finite-dimensional Lie groups for systems that posses symmetries under transformations of Lie Groups which the autor names G-Invariant Dynamical Systems. One particular case investigated in \cite{Bonabel2005} explains the general from of non-linear observers on SO(3)\footnote{Group of unitary rotating matrices with the inverses equal to their respective transpose.} which considers dynamics on the tangential Lie Algebras $\mathfrak{so}(3)$ as well the correction terms, the orientation is determined from two vectorial measuremnts depending of the rotational transformation on the Lie group. Such extructure, identifies the nonlinear observer proposed in \cite{Mahony2008} who presents extensive analysis of non-linear attitude observers on SO(3) in terms of the Lyapunov stability and the reconstruction of the Rotation matrix based on two vectorial mesurements, that he explains can be internally calculated within the correction term which has demostrated to have a work very well. As they indicated, \cite{Mahony2008} extends a globally defined observer dynamics which global asymptotic stability is proved under the assumption that the observer error trajectory does not intersect a forward invariant set of inestability conditions, further they implicate a sub-optimal solution of the algebraic reconstruction of the rotation equation which we believe can be improved. 
 
-What we propose in this work is to extend the idea of series non-linear complementary observer from \cite{Scandaro2011} who also combines pasive version of the complementaty filter on SO(3) \cite{Mahony2008} attitude non-linear complementary observer. We deem reduce prediction errors by pre-computing the rotation matrix applying  a observador optimo tipo EKF de orientacion en cuaterniones para la obtencion de la determinacion optima de la matriz de rotacion, dentro del algoritmo de observadores en cascada tipo filtro complementario en SO(3) de Mahony-Scandaroli, mejora la calidad de la estimacion de la informacion de navegacion.}\par
-De manera general, existen dos puntos importantes que se abordan en el desarrollo de este proyecto:
+What we propose in this work is to extend the idea of series non-linear complementary observer from \cite{Scandaro2011} who also combines pasive version of the complementaty filter on SO(3) \cite{Mahony2008} attitude non-linear complementary observer. We deem reduce prediction errors by pre-computing the rotation matrix with an optimal observer in quaternions. Two main points were studied during in this work:
 \begin{itemize}
-\item El primero es la modificación del \emph{algoritmo de observadores no lineales tipo filtro complementario en un grupo ortogonal especial SO(3) de Mahony y Scandaroli} (desarrollado por estos dos autores en las referencias \cite{Mahony2008,Scandaro2011}) con la inclusión de un observador óptimo tipo Filtro de Kalman Extendido (EKF)\footnote{El filtro de Kalman, fue desarrollado Rudolf Kalman en [\cite{Kalman1960}]} para la determinación de la matriz de rotación.
-\item Como segundo punto se tiene el desarrollo de una serie de experimentos que establecen la evaluación experimental para comprobar una mejora del algoritmo modificado con respecto al algoritmo original. \end{itemize}\par
+\item First, the modification of the original approach of \emph{Mahony-Scandaroli's navigation algorithm of non-linear observers on $SO(3)$} \cite{Mahony2008,Scandaro2011} by including the an EKF/ optimal observer, which was applied to optimally determine the rotation matrix based on vertorial measuments.
+\item Sencond, we studied the behavior of our approach compared with the original method in two different experiments. One sets the rotation on one axis using a camera that tracks the rotation that is used as reference and the other uses a comertial GPS system that allows to evaluate the estimation of the position. \end{itemize}\par
+The paper is structured as follows. In the section \ref{nav_problem} we state the navigation problem and how the original solution that we name \emph{Mahony-Scandarolli Algorithm}. Next we define the optimal reconstruction of rotation in the section \ref{opt_reconstruction} that constitudes the core of the contribution of this work. We state the experimentation methodology to compare both the original and modified algorithms. The results presented are in the section \ref{experimentation} which indicates an increment on complexity but also a considerable improvement in the general performance. 
 %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%
-\section{Problema de navegación: Algoritmo de navegación de Mahony-Scandarolli}
+\section{Navigatio problem: Mahony-Scandarolli navigation algorithm}\label{nav_problem}
 %%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%
 La solución al problema de navegación se delimita en la determinación las dos condiciones que describen el movimiento de un cuerpo: la situación espacial; y el ritmo de cambio de cambio de dicha situación. Es así, que con el afán solucionar este problema, el algoritmo de navegación dentro del sistema de navegación interpreta la medición de parámetros del medio o que son consecuencia del propio movimiento, para determinar aquellas condiciones que describen el movimiento del cuerpo; es decir, reconstruye la información de navegación\footnote{Variables que describen el movimiento} a partir de información corrompida, parcial y relacionada con las variables del movimiento, la cual es proporcionada por sensores de navegación.\par
@@ -409,7 +409,7 @@ La relación sub-optima se establece en la incorporación del estimado de la mat
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%
-\section{Reconstrucción Óptima de la matriz de rotación}
+\section{Reconstrucción Óptima de la matriz de rotación\label{opt_reconstruction}}
 %%
 Considerando las desventajas señaladas en la sección anterior, se identifica que el mejorar la reconstrucción de la matriz de rotación puede traer mejoras en el desempeño general del algoritmo. Para ello, se buscará solucionar de manera óptima el problema de determinación de la matriz de rotación\footnote{Planteado en la referencia \cite{Mahony2008}} a partir de mediciones vectoriales.
 %%%%%%%%%%%%%%
@@ -508,7 +508,7 @@ Para la evaluación de la estimación de la posición y velocidad lineal el esqu
 \label{plataforma_fig9}
 \end{figure}
 Los experimentos son realizados siguiendo circuitos cerrados en un vehículo en donde se monta una caja que contiene al sensor comercial y los sensores de navegación de forma tal que es posible realizar la estimación de la información de navegación y capturar información de referencia. De forma similar al caso del movimiento angular, como se describe en la figura \ref{plataforma_fig9}, la información de los sensores de navegación es procesada por los algoritmos de navegación obteniendo $\hat{X}_{mh}$ y $\hat{X}_{mdf}$; y de forma simultánea, durante el movimiento del vehículo, se captura la información de referencia que corresponde al GPS GARMIN-ETEX.
-\section{Resultados experimentales}
+\section{Resultados experimentales}\label{experimentation}
 En esta sección se presentan los resultados experimentales resaltando sus principales características.
 \subsection{Prueba con la plataforma experimental de la estimación los ángulos de Euler}
 Esta fase emplea el esquema experimental descrito en la sección \ref{Plataforma2}, en la cual el sensor angular de video (constituido por una cámara) captura la información de la rotación de uno de los ángulos de Euler, al mismo tiempo que los algoritmos de navegación realizan la estimación de la misma variable\footnote{Dentro del conjunto de datos que conforman la información de navegación estimada.}.\par
