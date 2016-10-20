@@ -390,7 +390,7 @@ Under this scheme, the vectorial reconstruction feeds in the attitude observer w
 \begin{equation}\label{ReconstruccionVectorial}
 R_y=\sum_{i=1}^{n}f(v_i,\hat{R})
 \end{equation}
-The main disadvantage in the formulation of the complementary filters on SO(3) is the sensibility  to $R_y$ in as much it is involved in the mapping of $\omega_s$ to $\marco{A}$, fot that reason the detemination of this matrix play a mayor role. They mention that the optimal solution can be termined in the minimization argument of:
+The main disadvantage in the formulation of the complementary filters on SO(3) is the sensibility  to $R_y$ in as much it is involved in the mapping of $\omega_s$ to $\marco{A}$, fot that reason the determination of this matrix play a mayor role. They mention that the optimal solution can be termined in the minimization argument of:
 \begin{equation}\label{ProblemaOptimizacion}
 R^*=\arg~\min_{R}\left\{\sum_i|v_{0,i}-Rv_{m,i}|^2\right\}
 \end{equation}
@@ -404,44 +404,31 @@ In this section we present the general solution of the optimal determination of 
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%
 %%%%%%%%%%%%%%
-\subsection{Rotation matrix from a gravity measument model on quaternions.}
-\begin{figure} [t]
-\begin{center}
-\includegraphics[scale=0.50,viewport=20 50 430 330,clip]{ObsOptimo_fig3.pdf}
-\caption{Caracterización del error del modelo de medición.}
-\label{ObsOptimo_fig2}
-\end{center}
-\end{figure}
+\subsection{Optimal Rotation Matrix from a gravity measument model on quaternions.}
+%\begin{figure} [t]
+%\begin{center}
+%\includegraphics[scale=0.50,viewport=20 50 430 330,clip]{ObsOptimo_fig3.pdf}
+%\caption{Caracterización del error del modelo de medición.}
+%\label{ObsOptimo_fig2}
+%\end{center}
+%\end{figure}
 %%
-Se propone la determinación de la matriz de rotación interpretando el fenómeno de inclinación de campo gravitacional respecto al marco $\marco{B}$ con un observador óptimo en cuaterniones. En donde, el observador se constituye en el esquema detallado en la figura \ref{ObsOptimo_fig2}. En este esquema, se considera el fenómeno de rotación de un cuerpo rígido (excitado por \emph{torques} desconocidos) descrito por dos variables: la orientación y su velocidad angular, representadas por las salidas $\Theta$ y $\Omega$, respectivamente, estos parámetros son medidos:
-\begin{enumerate} 
-\item La velocidad angular por un giroscopio, obteniendo $\Omega_s$.
-\item La orientación $\Theta$ de manera indirecta por un acelerómetro, el cual mide inclinación del vector gravitacional respecto al marco fijo al cuerpo $\marco{B}$
-\end{enumerate}
-En este arreglo, el observador incorpora correcciones sistemáticas al modelo de cinemático de rotación en términos del cuaternión unitario, que se calculan a partir de:
-\begin{itemize}
-\item El error del modelo de medición de la aceleración gravitacional 
-\item Y la medición de la velocidad angular $\Omega_s$.
-\end{itemize}
-De manera tal que se reduce el error del modelo de medición, ajustando así el cuaternión que rota el valor teórico de la gravedad en el marco referencial inercial ($[0,0,g_0]^T$), alineando el mismo a la medición vectorial $a_s$.\par
-%%
-Esto último es posible, dado que el cuaternión se define en las rotaciones de los ángulos de Euler (ver \cite{Altmann1986}).\par
+We propose to compute the Rotation Matrix by observing the inclination of the gravity vector field in $\marco{B}$  with an optimal observer in quaternion  in sense that rotation a rigid body in completely described in terms of the Euler angles $\Theta$ and the angular velocity, and further these given states can be intuitively determined through the measurement of: the angular speed $\Omega_s$ with a gyroscope and the observation of the attitude $\Theta$ with an accelerometer in the declination of the gravity vector, which is possible since the rotation matrix can be expressed in terms of the components of unitary quaternion \cite{Altmann1986}. Hence, an optimal observer should reduce the deviation measurement of acceleration $a_s$ to its rotated theoretical value $g_0$ in $\marco{A}$.\par
 %%%
-\subsection{Observador óptimo en cuaterniones}
-En la definición del observador óptimo, se identifica entonces el caso particular de la ecuación \ref{ProblemaOptimizacion}, donde la matriz de rotación óptima $R^*$ depende de la relación de optimización del cuaternión unitario de rotación $\breve{q}$, denotado por $\breve{q}=q_0+q_1i+q_2j+q_3k$ en $\mathbb{H}$:
+\subsection{Optimal observer of the unitary quaternion}
+The optimal observer work  to reduce the loss function in \ref{ProblemaOptimizacionAcc} where $R^*$ depends on unitary quaternion $\breve{q}$ which can be expressed as $\breve{q}=q_0+q_1i+q_2j+q_3k \in \mathbb{Q} \subset \mathbb{H}$\footnote{$\mathbb{H}$ denotes the Hamiltonian space of quaternion complex numbers $\mathbb{Q}$ is the sub-space of all quaternions with unitary norm.}:
 \begin{equation}\label{ProblemaOptimizacionAcc}
 R^*(\breve{q})=R\left(q^*=\arg\min_{\breve{q}}\left\{a_s-R^T(\breve{q})g_0\right\}\right)
 \end{equation} 
-De esa manera, la solución a la matriz de rotación óptima deriva del procedimiento de optimización del cuaternión unitario que rota el valor teórico de la gravedad $g_0$ hacia la medición de la inclinación campo vectorial gravitatorio $a_s$, en la relación que establece $\hat{a}_s$ en la siguiente ecuación, como la estimación de la medición vectorial de la gravedad en función del cuaternión unitario \cite{Sola2012}:
+Thereby, the solution of that optimization is given by optimal unitary quaternion that rotates $g_0$ to $a_s$ which is estimated by $\hat{a}_s$ as follows \cite{Sola2012}:
 \begin{equation}\label{chap2:ModeloMedicion}
 \hat{a}_s=\bar{\breve{q}}\otimes\breve{g_0}\otimes\breve{q}=Rg_0=g_0\begin{bmatrix}2(q_1q_3-q_oq_2)\\2(q_2q_3+q_0q_1)\\q_0^2-q_1^2-q_2^2-q_3^2\end{bmatrix}
 \end{equation}
-La evolución en el tiempo del cuaternión unitario está delimitado en la descripción cinemática del movimiento rotación en $\mathbb{Q}$, definida como:
+Besides, the kinematics given by \ref{modelo2} is defined by the quaternion product of \footnote{Denoted by $\otimes$} the angular velocity expressed in $\mathbb{H}$\footnote{This notation defines the expression of vector as a pure quaternion where the real part is zero and components are spread over the three complex numbers} as $\breve{\Omega}$ and $\breve{q}$.\par:
 %%%
 \begin{equation}\label{modelo2}
 \dot{\breve{q}}=\frac{1}{2}\breve{q}\otimes\breve{\Omega}
 \end{equation}
-Donde, la derivada del cuaternión unitario se define en el producto de cuaterniones \footnote{Denotada por el símbolo $\otimes$} de la velocidad angular en $\mathbb{Q}$\footnote{Definida como un cuaternión puro, en donde la parte real es cero, y las componentes están repartidas en $i$, $j$ y $k$, para la velocidad angular en los ejes $x$, $y$ y $z$, respectivamente} ($\breve{\Omega}$) y el cuaternión unitario ($\breve{q}$).\par
 A partir de esto, el reto asumido por el observador es determinar el cuaternión óptimo en el tiempo $T$, considerando de tres elementos: i) la incertidumbre en las condiciones iniciales $\tilde{q}_0$ y $\hat{v}_0$, ii) la incertidumbre del modelo discretizado del proceso de rotación del cuaternión $\hat{w}_k$, definido en (\ref{quaMod}), donde $f^0_k$ es la versión discretizada de (\ref{modelo2}) y $\hat{\breve{q}}_{k}$ es el estimado discreto del cuaternión.
 \begin{equation}
 \label{quaMod}
