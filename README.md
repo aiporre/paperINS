@@ -1,8 +1,4 @@
-# Rotation Matrix Reconstruction in Quaternions with
-
-# an Optimal Observer: A Navigation Algorithm
-
-# Based on Nonlinear Complementary Observers
+# Rotation Matrix Reconstruction in Quaternions with an Optimal Observer: A Navigation Algorithm Based on Nonlinear Complementary Observers
 
 ## Ariel Iporre Rivas∗and Mauricio Amestegui Moreno ́ 
 
@@ -80,6 +76,3 @@ servers,”IEEE Transactions on Automatic Control, vol. 53, no. 11, pp.
 [17] J. Sola, “Quaternion kinematics for the error-state kf,” 2015.
 [18] F. L. Lewis, D. Vrabie, and V. L. Syrmos,Optimal control. John Wiley
 & Sons, 2012.
-```
-
-
